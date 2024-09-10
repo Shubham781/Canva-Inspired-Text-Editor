@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Canvas Text Editor with Improved Features</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="toolbar">
+            <button id="addText" data-tooltip="Add Text">Add Text</button>
+            <button id="deleteText" data-tooltip="Delete Selected Text">Delete Text</button>
+            <button id="undo" data-tooltip="Undo">Undo</button>
+            <button id="redo" data-tooltip="Redo">Redo</button>
+            <select id="fontSelect" data-tooltip="Font Family">
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+            </select>
+            <input type="number" id="fontSize" min="8" max="72" value="16" data-tooltip="Font Size">
+            <button id="bold" class="style-button" data-tooltip="Bold">B</button>
+            <button id="italic" class="style-button" data-tooltip="Italic"><i>I</i></button>
+            <button id="underline" class="style-button" data-tooltip="Underline"><u>U</u></button>
+            <button id="alignLeft" class="style-button" data-tooltip="Align Left">&#8592;</button>
+            <button id="alignCenter" class="style-button" data-tooltip="Align Center">&#8596;</button>
+            <button id="alignRight" class="style-button" data-tooltip="Align Right">&#8594;</button>
+            <input type="color" id="textColor" value="#000000" data-tooltip="Text Color">
+            <input type="color" id="bgColor" value="#ffffff" data-tooltip="Background Color">
+            <div style="position: relative;">
+                <button id="export" data-tooltip="Export">Export</button>
+                <div id="exportOptions" class="export-options">
+                    <button id="exportPDF">Download as PDF</button>
+                    <button id="exportWord">Download as Word</button>
+                </div>
+            </div>
+        </div>
+        <div id="canvas"></div>
+    </div>
+
+</body>
+</html>
