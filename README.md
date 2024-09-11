@@ -1,5 +1,4 @@
 # Canva-Inspired-Text-Editor
-# Canvas Text Editor
 
 Canvas Text Editor is a web-based tool that allows users to add, edit, and style text on a canvas, similar to popular design tools like Canva. This project is built using HTML, CSS, and JavaScript, providing a simple yet powerful interface for text manipulation.
 
