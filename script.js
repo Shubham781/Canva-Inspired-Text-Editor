@@ -29,7 +29,8 @@ addTextBtn.addEventListener('click', () => {
     textElement.id = `text-${currentId++}`;
     textElement.style.left = '10px';
     textElement.style.top = '10px';
-    textElement.innerHTML = 'Edit me';
+    textElement.dataset.placeholder = 'Edit me';
+    textElement.innerHTML = ''; // Start with empty content
     canvas.appendChild(textElement);
     makeElementDraggable(textElement);
     addToHistory('add', textElement);
@@ -165,7 +166,38 @@ canvas.addEventListener('click', (e) => {
     }
 });
 
-// Export functions
+// Handle placeholder behavior
+canvas.addEventListener('focus', (e) => {
+    if (e.target.classList.contains('text-element') && e.target.innerHTML === '') {
+        e.target.classList.add('empty');
+    }
+}, true);
+
+canvas.addEventListener('blur', (e) => {
+    if (e.target.classList.contains('text-element') && e.target.innerHTML === '') {
+        e.target.classList.remove('empty');
+    }
+}, true);
+
+canvas.addEventListener('input', (e) => {
+    if (e.target.classList.contains('text-element')) {
+        if (e.target.innerHTML !== '') {
+            e.target.classList.remove('empty');
+        } else {
+            e.target.classList.add('empty');
+        }
+        
+        // Adjust text box size based on content
+        e.target.style.width = 'auto';
+        e.target.style.height = 'auto';
+        const newWidth = e.target.scrollWidth + 10; // Add some padding
+        const newHeight = e.target.scrollHeight + 10;
+        e.target.style.width = `${newWidth}px`;
+        e.target.style.height = `${newHeight}px`;
+    }
+});
+
+// Export functions (unchanged)
 exportBtn.addEventListener('click', () => {
     exportOptions.style.display = exportOptions.style.display === 'block' ? 'none' : 'block';
 });
@@ -199,17 +231,5 @@ exportWordBtn.addEventListener('click', () => {
 document.addEventListener('click', (e) => {
     if (!exportBtn.contains(e.target) && !exportOptions.contains(e.target)) {
         exportOptions.style.display = 'none';
-    }
-});
-
-// Adjust text box size based on content
-canvas.addEventListener('input', (e) => {
-    if (e.target.classList.contains('text-element')) {
-        e.target.style.width = 'auto';
-        e.target.style.height = 'auto';
-        const newWidth = e.target.scrollWidth + 10; // Add some padding
-        const newHeight = e.target.scrollHeight + 10;
-        e.target.style.width = `${newWidth}px`;
-        e.target.style.height = `${newHeight}px`;
     }
 });
