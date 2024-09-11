@@ -118,3 +118,31 @@ button[data-tooltip]:hover::after {
 .export-options button:hover {
   background-color: #f1f1f1;
 }
+
+.resizer {
+  width: 10px;
+  height: 10px;
+  background: blue;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
+}
+
+.text-element {
+  position: absolute;
+  min-width: 50px;
+  min-height: 20px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  cursor: move;
+}
+
+.text-element:hover {
+  border-color: #007bff;
+}
+
+.text-element.selected {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.5);
+}
