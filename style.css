@@ -75,6 +75,11 @@ button[data-tooltip]:hover::after {
   outline: none;
   border-color: #007bff;
 }
+.text-element.empty:before {
+  content: attr(data-placeholder);
+  color: #999;
+  font-style: italic;
+}
 #addText, #undo, #redo, #export, #deleteText {
   background-color: #007bff;
   color: white;
